@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>calculador de propina</title>
+  </head>
+  <body>
+    <div>
+      <header>
+        <h1>Calculador de Propina</h1>
+      </header>
+      <section class="Contain-calculator">
+        <ul>
+          <li>
+            <label for="number">Monto total de la cuenta </label>
+            <input
+              type="number"
+              name="number"
+              id="monto-total"
+              placeholder=" $"
+            />
+          </li>
+          <li>
+            <label for="number">% de la propina</label>
+            <select type="number" name="number" id="default-porsentaje">
+              <option value="10">10</option>
+              <option value="20">15</option>
+              <option value="30">20</option>
+            </select>
+          </li>
+          <li>
+            <input type="checkbox" id="opcion1" name="opcion1" />
+            <input type="number" name="otroPorsenaje" id="otro-porsentaje" />
+          </li>
+          <li>
+            <label for="Personas">Cantidad de personas</label>
+            <input type="number" placeholder="Personas" />
+          </li>
+        </ul>
+        <div>
+          <button id="calcular-total">Calcular</button>
+          <button id="reiniciar-total">Reiniciar</button>
+        </div>
+        <ul>
+          <li>
+            <td>Total de la propina</td>
+            <input type="text" disabled name="total-propina" />
+          </li>
+          <li>Total de propina por personas</li>
+          <input type="text" disabled name="total-por-persona" />
+        </ul>
+      </section>
+    </div>
+  </body>
+</html>
