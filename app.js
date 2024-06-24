@@ -9,30 +9,34 @@ const totalPropinaPorPersona = document.querySelector("#total-por-persona");
 const reiniciar = document.querySelector("#reiniciar");
 
 calcular.addEventListener("click", () => {
-
-  calcularTotalPropina(montoTotal.value);
+  calcularTotalPropina();
 });
 
 reiniciar.addEventListener("click", borrar);
 
-function calcularTotalPropina(montoTotal) {
+function calcularTotalPropina() {
   let monto = 0;
   let propinaXPesona = 0;
+  const montoTotalValor = parseFloat(montoTotal.value);
+  const cantidadDePerssonasValor = parseFloat(cantidadDePersonas.value);
 
-  if (montoTotal === "") return alert("ingrese un monto valido");
-
-  if (checkbox.checked) {
-    const valorElegido = propinaElegida.value / 100;
-    monto = valorElegido * montoTotal;
-    propinaXPesona = monto / cantidadDePersonas.value;
-  } else {
-    const porsentajeDecimal = porsentajeDefault.value / 100;
-    monto = porsentajeDecimal * montoTotal;
-    propinaXPesona = monto / cantidadDePersonas.value;
+  if (isNaN(montoTotalValor) || montoTotalValor <= 0) {
+    alert("ingrese un monto valido");
+    return;
   }
 
-  totalPropina.value = monto;
-  totalPropinaPorPersona.value = propinaXPesona;
+  if (checkbox.checked) {
+    const valorElegido = parseFloat(propinaElegida.value) / 100;
+    monto = valorElegido * montoTotalValor;
+  } else {
+    const porsentajeDecimal = parseFloat(porsentajeDefault.value) / 100;
+    monto = porsentajeDecimal * montoTotalValor;
+  }
+  if (cantidadDePerssonasValor > 0) {
+    propinaXPesona = monto / cantidadDePerssonasValor;
+  }
+  totalPropina.value = monto.toFixed(2);
+  totalPropinaPorPersona.value = propinaXPesona.toFixed(2);
 }
 
 function borrar() {
