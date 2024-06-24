@@ -14,6 +14,15 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   reiniciar.addEventListener("click", borrar);
+  checkbox.addEventListener("change", () => {
+    if (checkbox.checked) {
+      propinaElegida.disabled = false;
+      propinaElegida.removeAttribute("readonly");
+    } else {
+      propinaElegida.disabled = true;
+      propinaElegida.setAttribute("readonly", "readonly");
+    }
+  });
 });
 function calcularTotalPropina() {
   let monto = 0;
@@ -29,9 +38,11 @@ function calcularTotalPropina() {
   if (checkbox.checked) {
     const valorElegido = parseFloat(propinaElegida.value) / 100;
     monto = valorElegido * montoTotalValor;
+    propinaElegida.disabled = false;
   } else {
     const porsentajeDecimal = parseFloat(porsentajeDefault.value) / 100;
     monto = porsentajeDecimal * montoTotalValor;
+    propinaElegida.disabled = true;
   }
   if (cantidadDePerssonasValor > 0) {
     propinaXPesona = monto / cantidadDePerssonasValor;
