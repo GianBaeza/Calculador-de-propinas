@@ -8,12 +8,13 @@ const totalPropina = document.querySelector("#total-de-propina");
 const totalPropinaPorPersona = document.querySelector("#total-por-persona");
 const reiniciar = document.querySelector("#reiniciar");
 
-calcular.addEventListener("click", () => {
-  calcularTotalPropina();
+document.addEventListener("DOMContentLoaded", () => {
+  calcular.addEventListener("click", () => {
+    calcularTotalPropina();
+  });
+
+  reiniciar.addEventListener("click", borrar);
 });
-
-reiniciar.addEventListener("click", borrar);
-
 function calcularTotalPropina() {
   let monto = 0;
   let propinaXPesona = 0;
